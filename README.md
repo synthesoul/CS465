@@ -1,48 +1,49 @@
-Module 2: MVC Architecture with Dynamic Views
+# Travlr Getaways - CS465 Full Stack Development
 
-Purpose:
-Refactor the application to implement a model-view-controller structure and render dynamic content using Handlebars.
-Completed Tasks
+---
 
-    Created an app_server folder with routes, controllers, and views.
+## Module 3: Dynamic Handlebars Views with JSON Integration
 
-    Implemented the /travel route using MVC.
+**Purpose:**  
+Enhance the customer-facing site by integrating a JSON data layer to dynamically render content using Handlebars (HBS), while preserving the existing site design and layout.
 
-    Converted travel.html into travel.hbs and rendered it with dynamic title and heading.
+**Completed Tasks:**
+- Created a `data/trips.json` file containing structured trip data for the Travel page.
+- Converted `index.html` to `travel.hbs`, maintaining full styling and layout.
+- Replaced static content with `{{#each trips}}` in `travel.hbs` to dynamically render trip listings.
+- Created reusable partials: `header.hbs` and `footer.hbs`.
+- Updated `app.js` to register HBS partials and route views from `app_server/views`.
+- Built a new controller (`travel.js`) that loads and parses `trips.json`.
+- Updated routing logic in `index.js` to serve `/travel` via MVC.
+- Configured `package.json` with a `start` script (`"start": "node app.js"`).
+- Verified functionality locally using `npm start` and browser inspection.
+- Pushed final changes to GitHub on the `module3` branch.
 
-    Moved static assets into public/css and public/images.
+**How to Run:**
+Navigate to the project directory:
+   ```bash
+   cd travlr
 
-    Configured the root route / to redirect to /travel.
-
-    Verified application behavior with curl and browser.
-
-    Pushed final version to GitHub on the module2 branch.
-
-How to Run
-
-    Navigate to the module2 project folder:
-
-cd travlr
-
-Install dependencies:
+    Install dependencies:
 
 npm install
 
 Start the server:
 
-node app.js
+    npm start
 
-Visit in browser:
-
+    Open your browser:
     http://localhost:3000
 
-Reflection
+Reflection:
+This module emphasized integrating JSON with templating engines and ensuring maintainability through reusable partials. I preserved the original UI while rendering dynamic content from structured data. This experience reinforced key skills in Express routing, template logic, and data-driven rendering.
 
-This module emphasized architectural structure and dynamic rendering. I transitioned from static to template-based rendering using MVC principles. I also reinforced version control habits and deployment testing.
-
-GitHub Repository
+GitHub Repository:
 
     Module 1: https://github.com/synthesoul/CS465/tree/module1
 
     Module 2: https://github.com/synthesoul/CS465/tree/module2
-    
+
+    Module 3: https://github.com/synthesoul/CS465/tree/module3
+
+
