@@ -1,49 +1,40 @@
-# Travlr Getaways - CS465 Full Stack Development
+## Module 4: MongoDB Integration with Mongoose
+
+### Purpose
+Establish a robust backend by connecting MongoDB to the Express app via Mongoose. Define schema models, populate test data, and expose an API to serve JSON responses.
 
 ---
 
-## Module 3: Dynamic Handlebars Views with JSON Integration
+### Completed Tasks
+- Installed MongoDB binaries manually for Void Linux and configured it to run locally.
+- Created `app_api/models/db.js` to connect to MongoDB using Mongoose with error handling.
+- Defined the `Trip` schema using Mongoose with fields such as name, destination, cost, etc.
+- Populated the `trips` collection with seed data and validated insertion via `mongosh`.
+- Created Express API routes to serve `/api/trips` as JSON.
+- Tested API response and database connection using Postman and direct inspection.
+- Resolved permissions issues in `views/` and verified full app boot sequence.
+- Confirmed MongoDB service was active and listening on `127.0.0.1:27017`.
 
-**Purpose:**  
-Enhance the customer-facing site by integrating a JSON data layer to dynamically render content using Handlebars (HBS), while preserving the existing site design and layout.
+---
 
-**Completed Tasks:**
-- Created a `data/trips.json` file containing structured trip data for the Travel page.
-- Converted `index.html` to `travel.hbs`, maintaining full styling and layout.
-- Replaced static content with `{{#each trips}}` in `travel.hbs` to dynamically render trip listings.
-- Created reusable partials: `header.hbs` and `footer.hbs`.
-- Updated `app.js` to register HBS partials and route views from `app_server/views`.
-- Built a new controller (`travel.js`) that loads and parses `trips.json`.
-- Updated routing logic in `index.js` to serve `/travel` via MVC.
-- Configured `package.json` with a `start` script (`"start": "node app.js"`).
-- Verified functionality locally using `npm start` and browser inspection.
-- Pushed final changes to GitHub on the `module3` branch.
+### Rubric Alignment
+- **Database Access Module:** Connected using Mongoose with error checks.
+- **API Integration:** Defined schema and successfully returned data as JSON.
+- **Populate Database:** Seeded collection with realistic data.
+- **Testing:** Verified MongoDB content and Express route output.
 
-**How to Run:**
-Navigate to the project directory:
-   ```bash
-   cd travlr
+---
 
-    Install dependencies:
+### Reflection
+This module was pivotal in forming the full stack. Bridging Express and MongoDB through Mongoose offered real experience with schema design and async database flows. Installing and debugging MongoDB manually on Void Linux reinforced Linux admin skills and helped troubleshoot permission issues that might arise in production environments.
 
-npm install
+---
 
-Start the server:
+### Development Insights
+Moving forward, the focus will shift to:
+- Expanding RESTful endpoints (CRUD operations)
+- Angular integration to consume live API data
+- Adding form handling and submission from the front end
+- Implementing JWT authentication and route protection
 
-    npm start
-
-    Open your browser:
-    http://localhost:3000
-
-Reflection:
-This module emphasized integrating JSON with templating engines and ensuring maintainability through reusable partials. I preserved the original UI while rendering dynamic content from structured data. This experience reinforced key skills in Express routing, template logic, and data-driven rendering.
-
-GitHub Repository:
-
-    Module 1: https://github.com/synthesoul/CS465/tree/module1
-
-    Module 2: https://github.com/synthesoul/CS465/tree/module2
-
-    Module 3: https://github.com/synthesoul/CS465/tree/module3
-
-
+The groundwork laid in Module 4 ensures a strong backend that is ready to support a dynamic, secure Angular front end.
