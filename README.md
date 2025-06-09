@@ -1,40 +1,60 @@
-## Module 4: MongoDB Integration with Mongoose
+# Travlr Getaways – Module 5: API Separation & Integration
 
-### Purpose
-Establish a robust backend by connecting MongoDB to the Express app via Mongoose. Define schema models, populate test data, and expose an API to serve JSON responses.
-
----
-
-### Completed Tasks
-- Installed MongoDB binaries manually for Void Linux and configured it to run locally.
-- Created `app_api/models/db.js` to connect to MongoDB using Mongoose with error handling.
-- Defined the `Trip` schema using Mongoose with fields such as name, destination, cost, etc.
-- Populated the `trips` collection with seed data and validated insertion via `mongosh`.
-- Created Express API routes to serve `/api/trips` as JSON.
-- Tested API response and database connection using Postman and direct inspection.
-- Resolved permissions issues in `views/` and verified full app boot sequence.
-- Confirmed MongoDB service was active and listening on `127.0.0.1:27017`.
+## Purpose
+Advance backend architecture by implementing **Separation of Concerns**. This module isolates database access and routing logic into a dedicated API app (`app_api`) and tests full-stack communication between the frontend, Express server, and MongoDB via RESTful endpoints.
 
 ---
 
-### Rubric Alignment
-- **Database Access Module:** Connected using Mongoose with error checks.
-- **API Integration:** Defined schema and successfully returned data as JSON.
-- **Populate Database:** Seeded collection with realistic data.
-- **Testing:** Verified MongoDB content and Express route output.
+## Completed Tasks
+
+- Refactored database logic into `app_api/` using Express Router.
+- Created `app_api/controllers/trips.js` and `routes/index.js` for trip endpoint logic.
+- Connected Mongoose models from `app_api/models/db.js` to MongoDB instance on Void Linux.
+- Seeded trips data using `scripts/seed.js` and verified insertion.
+- Implemented `/api/trips` endpoint to return trip data in JSON format.
+- Tested API in Postman and validated with `curl` and `mongosh`.
+- Ensured full Express app boot sequence and MongoDB startup on `127.0.0.1:27017`.
 
 ---
 
-### Reflection
-This module was pivotal in forming the full stack. Bridging Express and MongoDB through Mongoose offered real experience with schema design and async database flows. Installing and debugging MongoDB manually on Void Linux reinforced Linux admin skills and helped troubleshoot permission issues that might arise in production environments.
+## Rubric Alignment
+
+### Establish Routes
+- RESTful `/api/trips` route served via `app_api/routes/index.js`.
+
+### MVC and REST API
+- Controllers, models, and routes modularized using Express best practices.
+
+### Testing
+- Validated routes using Postman, browser, and shell tools.
+- Confirmed Mongoose `find({})` returns JSON data correctly.
+- Handled error states with appropriate HTTP response codes.
 
 ---
 
-### Development Insights
-Moving forward, the focus will shift to:
-- Expanding RESTful endpoints (CRUD operations)
-- Angular integration to consume live API data
-- Adding form handling and submission from the front end
-- Implementing JWT authentication and route protection
+## Development Insights
 
-The groundwork laid in Module 4 ensures a strong backend that is ready to support a dynamic, secure Angular front end.
+Module 5 emphasized **decoupling logic** and testing inter-app communication. Manually managing MongoDB on Void Linux enhanced control over the dev environment and reinforced network/debugging skills.
+
+---
+
+## Next Steps
+
+- Build remaining CRUD operations (`POST`, `PUT`, `DELETE`).
+- Begin Angular frontend integration using live `/api` endpoints.
+- Add authentication via JWT and secure routes.
+- Polish UI with dynamic, responsive design.
+
+---
+
+## Environment
+
+- **OS**: Void Linux (Plasma)
+- **Node**: 20+
+- **MongoDB**: Manually installed, local bind (127.0.0.1)
+- **Editor**: VS Code / Kate
+- **Shell**: bash 5.2
+
+---
+
+> This README reflects Module 5 progress. Repository structure cleaned and organized into functional domains (`app_api`, `app_server`, `public`, `scripts`, `data`, and `archive`).
