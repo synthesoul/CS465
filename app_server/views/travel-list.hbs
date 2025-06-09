@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travlr - Travel Locations</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <header>
+    <h1>Travlr Getaways</h1>
+    <nav>
+      <a href="/travel">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Available Locations</h2>
+    {{#if locations.length}}
+      <ul>
+        {{#each locations}}
+          <li>
+            <h3>{{this.name}}</h3>
+            <p>{{this.address}}</p>
+            <p>Rating: {{this.rating}} / 5</p>
+            <p>{{this.facilities}}</p>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>No locations found.</p>
+    {{/if}}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Travlr</p>
+  </footer>
+</body>
+</html>

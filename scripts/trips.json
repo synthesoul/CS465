@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Sample Trip",
+    "slug": "sample-trip",
+    "category": "Adventure",
+    "image": "sample.jpg",
+    "price": 1299.99,
+    "duration": 7,
+    "description": "A thrilling sample adventure!",
+    "start": "2025-07-01",
+    "continent": "South America"
+  },
+  {
+    "name": "Paris Adventure",
+    "slug": "paris-adventure",
+    "category": "Culture",
+    "image": "paris.jpg",
+    "price": 1599.99,
+    "duration": 5,
+    "description": "Experience the charm of Paris with guided tours and gourmet dining.",
+    "start": "2025-08-01",
+    "continent": "Europe"
+  },
+  {
+    "name": "Tokyo Nights",
+    "slug": "tokyo-nights",
+    "category": "City Life",
+    "image": "tokyo.jpg",
+    "price": 1799.99,
+    "duration": 6,
+    "description": "Explore the vibrant city life of Tokyo, from sushi to shopping.",
+    "start": "2025-09-01",
+    "continent": "Asia"
+  },
+  {
+    "name": "Safari Escape",
+    "slug": "safari-escape",
+    "category": "Wildlife",
+    "image": "safari.jpg",
+    "price": 2099.99,
+    "duration": 8,
+    "description": "Venture into the wild with a luxury African safari package.",
+    "start": "2025-10-01",
+    "continent": "Africa"
+  }
+]
