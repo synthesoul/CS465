@@ -1,0 +1,8 @@
+<div *ngFor="let trip of trips" class="trip-card">
+  <h3>{{ trip.name }}</h3>
+  <p>Price: ${{ trip.price }}</p>
+  <p>Location: {{ trip.location }}</p>
+  <p>{{ trip.hotel }}, {{ trip.stars }} stars</p>
+
+  <a [routerLink]="['/edit', trip._id]">Edit</a>
+</div>

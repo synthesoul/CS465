@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Trip</title>
+</head>
+<body>
+  <h1>Create New Trip</h1>
+  <form id="createForm">
+    <input name="name" placeholder="Name" required /><br />
+    <input name="price" type="number" placeholder="Price" required /><br />
+    <input name="location" placeholder="Location" required /><br />
+    <input name="hotel" placeholder="Hotel" required /><br />
+    <input name="stars" type="number" placeholder="Stars" required /><br />
+    <button type="submit">Create</button>
+  </form>
+
+  <script>
+    document.getElementById('createForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const body = {
+        name: form.name.value,
+        price: form.price.value,
+        location: form.location.value,
+        hotel: form.hotel.value,
+        stars: form.stars.value
+      };
+
+      const token = localStorage.getItem('token');
+      if (!token) return alert('Must be logged in as admin');
+
+      const res = await fetch('/api/travel', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        alert('Trip created!');
+        window.location.href = 'index.html';
+      } else {
+        alert(result.message || 'Creation failed');
+      }
+    });
+  </script>
+</body>
+</html>

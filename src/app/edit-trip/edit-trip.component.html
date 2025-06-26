@@ -1,0 +1,30 @@
+<h2>Edit Trip</h2>
+
+<form (ngSubmit)="updateTrip()">
+  <label>
+    Name:
+    <input [(ngModel)]="trip.name" name="name" required>
+  </label><br>
+
+  <label>
+    Location:
+    <input [(ngModel)]="trip.location" name="location" required>
+  </label><br>
+
+  <label>
+    Price:
+    <input [(ngModel)]="trip.price" name="price" required type="number">
+  </label><br>
+
+  <label>
+    Hotel:
+    <input [(ngModel)]="trip.hotel" name="hotel">
+  </label><br>
+
+  <label>
+    Stars:
+    <input [(ngModel)]="trip.stars" name="stars" type="number">
+  </label><br>
+
+  <button type="submit">Update Trip</button>
+</form>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trip Admin Panel</title>
+</head>
+<body>
+  <h1>All Trips</h1>
+  <ul id="trip-list"></ul>
+
+  <h2>Create Trip</h2>
+  <form id="trip-form">
+    <input name="name" placeholder="Name" required><br>
+    <input name="location" placeholder="Location" required><br>
+    <input name="price" type="number" placeholder="Price" required><br>
+    <input name="hotel" placeholder="Hotel" required><br>
+    <input name="stars" type="number" placeholder="Stars" required><br>
+    <button type="submit">Add Trip</button>
+  </form>
+
+  <script>
+    const API = '/api/travel';
+    const tripList = document.getElementById('trip-list');
+    const form = document.getElementById('trip-form');
+    const token = prompt("Enter your JWT token:");
+
+    async function loadTrips() {
+      const res = await fetch(API);
+      const trips = await res.json();
+      tripList.innerHTML = '';
+      trips.forEach(trip => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${trip.name}</strong> (${trip.location}) - $${trip.price}<br>
+          ${trip.hotel}, ${trip.stars} stars
+          <br>
+          <button onclick="editTrip('${trip._id}')">Edit</button>
+          <button onclick="deleteTrip('${trip._id}')">Delete</button>
+        `;
+        tripList.appendChild(li);
+      });
+    }
+
+    async function deleteTrip(id) {
+      if (!confirm("Are you sure you want to delete this trip?")) return;
+
+      const res = await fetch(`${API}/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (res.ok) {
+        alert("Trip deleted.");
+        loadTrips();
+      } else {
+        const err = await res.json();
+        alert("Delete failed: " + err.message);
+      }
+    }
+
+    async function editTrip(id) {
+      const name = prompt("Enter new name:");
+      const location = prompt("Enter new location:");
+      const price = parseFloat(prompt("Enter new price:"));
+      const hotel = prompt("Enter new hotel:");
+      const stars = parseInt(prompt("Enter new star rating:"));
+
+      const updatedTrip = { name, location, price, hotel, stars };
+
+      const res = await fetch(`${API}/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(updatedTrip)
+      });
+
+      if (res.ok) {
+        alert("Trip updated.");
+        loadTrips();
+      } else {
+        const err = await res.json();
+        alert("Update failed: " + err.message);
+      }
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.price = parseFloat(data.price);
+      data.stars = parseInt(data.stars);
+
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        alert('Trip added');
+        form.reset();
+        loadTrips();
+      } else {
+        const err = await res.json();
+        alert('Error: ' + err.message);
+      }
+    });
+
+    loadTrips();
+  </script>
+</body>
+</html>

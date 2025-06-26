@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Trip Detail</title></head>
+<body>
+  <a href="index.html">← Back</a><hr>
+  <div id="trip">Loading…</div>
+  <button id="delBtn" style="display:none">Delete</button>
+
+  <script>
+    const qs  = new URLSearchParams(location.search);
+    const id  = qs.get('id');
+    const tok = localStorage.getItem('token');
+    if(tok) delBtn.style.display='inline';
+
+    fetch('/api/travel/'+id).then(r=>r.json()).then(t=>{
+      trip.innerHTML = `
+        <h2>${t.name}</h2>
+        <p>Price $${t.price}</p>
+        <p>${t.location}</p>
+        <p>${t.hotel}, ${t.stars}★</p>
+        ${ tok ? `<a href="edit.html?id=${t._id}">Edit trip</a>` : '' }
+      `;
+    });
+
+    delBtn.onclick = async ()=>{
+      if(!confirm('Delete this trip?')) return;
+      const r = await fetch('/api/travel/'+id,{
+        method:'DELETE',
+        headers:{ Authorization:'Bearer '+tok }
+      });
+      if(r.ok){ alert('Deleted'); location.href='index.html'; }
+      else     { const d=await r.json(); alert(d.message||'Delete failed'); }
+    };
+  </script>
+</body>
+</html>

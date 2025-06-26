@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Edit Trip</title></head>
+<body>
+  <h1>Edit Trip</h1>
+  <form id="editForm"></form>
+
+  <script>
+    const id  = new URLSearchParams(location.search).get('id');
+    const tok = localStorage.getItem('token');
+    if(!tok) { alert('Admin login required'); location='login.html'; }
+
+    // pre-fill form
+    fetch('/api/travel/'+id).then(r=>r.json()).then(t=>{
+      editForm.innerHTML = `
+        Name:     <input name="name"     value="${t.name}"     required><br>
+        Price:    <input name="price"    type="number" value="${t.price}"    required><br>
+        Location: <input name="location" value="${t.location}" required><br>
+        Hotel:    <input name="hotel"    value="${t.hotel}"    required><br>
+        Stars:    <input name="stars"    type="number" value="${t.stars}"    required><br>
+        <button>Save</button>
+      `;
+    });
+
+    editForm.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const body = Object.fromEntries(new FormData(editForm));
+      const r = await fetch('/api/travel/'+id,{
+        method :'PUT',
+        headers:{
+          'Content-Type':'application/json',
+          Authorization  :'Bearer '+tok
+        },
+        body: JSON.stringify(body)
+      });
+      const d = await r.json();
+      alert(d.message||'Saved');
+      if(r.ok) location='trip.html?id='+id;
+    });
+  </script>
+</body>
+</html>

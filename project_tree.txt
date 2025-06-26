@@ -1,0 +1,90 @@
+.
+├── about.html
+├── app_api
+│   ├── controllers
+│   │   ├── auth.js
+│   │   └── travel.js
+│   ├── middleware
+│   │   ├── requireAdmin.js
+│   │   └── verifyToken.js
+│   ├── models
+│   │   ├── db.js
+│   │   ├── travel.js
+│   │   ├── trip.js
+│   │   ├── trips.js
+│   │   └── user.js
+│   └── routes
+│       ├── auth.js
+│       ├── index.js
+│       ├── test.js
+│       └── travel.js
+├── app.js
+├── app_server
+│   ├── controllers
+│   │   └── travel.js
+│   ├── routes
+│   │   ├── travel.js
+│   │   └── .travel.js.kate-swp
+│   └── views
+│       └── travel-list.hbs
+├── contact.html
+├── data
+│   └── trips.json
+├── .gitignore
+├── index.html
+├── meals.html
+├── news.html
+├── package.json
+├── package-lock.json
+├── project-structure.txt
+├── project_tree.txt
+├── public
+│   ├── create.html
+│   ├── css
+│   │   └── style.css
+│   ├── edit.html
+│   ├── images
+│   │   ├── bg-adbox.png
+│   │   ├── bg-body.jpg
+│   │   ├── bg-box.png
+│   │   ├── bg-foodDetail.png
+│   │   ├── bg-foodInfos.png
+│   │   ├── bg-menu.png
+│   │   ├── bg-navigation.png
+│   │   ├── bg-pattern.jpg
+│   │   ├── btn-send.png
+│   │   ├── buffet.jpg
+│   │   ├── content-box.png
+│   │   ├── deluxe.jpg
+│   │   ├── desserts.jpg
+│   │   ├── dive-site.png
+│   │   ├── first-class.jpg
+│   │   ├── food.png
+│   │   ├── icons.png
+│   │   ├── kayak.jpg
+│   │   ├── logo.png
+│   │   ├── reef1.jpg
+│   │   ├── reef2.jpg
+│   │   ├── reef3.jpg
+│   │   ├── rooms.png
+│   │   ├── seafoods.jpg
+│   │   ├── searchbar.png
+│   │   ├── sea-sound.jpg
+│   │   └── suite.jpg
+│   ├── index.html
+│   ├── login
+│   │   └── index.html
+│   ├── login.html
+│   ├── register
+│   │   └── index.html
+│   ├── register.html
+│   ├── travel
+│   │   └── index.html
+│   └── trip.html
+├── README.md
+├── rooms.html
+├── scripts
+├── seed.js
+└── travlr.png
+
+17 directories, 70 files
